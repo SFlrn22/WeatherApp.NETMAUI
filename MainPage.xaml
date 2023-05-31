@@ -6,12 +6,12 @@
     <StackLayout>
         <Label x:Name="LabelLatitude" 
                FontSize="20"
-               Text="{Binding Latitude, StringFormat='Latitude: {0}'}"
+               Text="{Binding main.temp}"
                TranslationX="50"
                TranslationY="250"/>
         <Label x:Name="LabelLongitude"
-               Text="{Binding Longitude, StringFormat='Longitude: {0}'}"
                FontSize="20"
+               Text="{Binding main.feels_like}"
                TranslationX="50"
                TranslationY="300"/>
         <Button
