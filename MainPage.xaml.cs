@@ -1,24 +1,21 @@
-﻿namespace WeatherApp.NETMAUI;
+﻿using WeatherApp.NETMAUI.Models;
+using WeatherApp.NETMAUI.Services;
+
+namespace WeatherApp.NETMAUI;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    LocalizationService _localizationService;
+    public MainPage()
+    {
+        InitializeComponent();
+        _localizationService = new LocalizationService();
+    }
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
-
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    private async void ButtonClicked(object sender, EventArgs e)
+    {
+        Coordinates locationCoords = await _localizationService.GetLocation();
+        BindingContext = locationCoords;
+    }
 }
 
