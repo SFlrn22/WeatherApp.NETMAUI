@@ -4,6 +4,7 @@
              x:Class="WeatherApp.NETMAUI.MainPage">
 
     <StackLayout>
+        <Image Source="{Binding weather[0].icon}" />
         <Label x:Name="LabelLatitude" 
                FontSize="20"
                Text="{Binding main.temp}"
