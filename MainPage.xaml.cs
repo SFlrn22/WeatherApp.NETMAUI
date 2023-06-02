@@ -29,6 +29,7 @@ public partial class MainPage : ContentPage
         string requestUri = endpoint;
         requestUri += $"weather?lat={locationCoords.Latitude}&lon={locationCoords.Longitude}";
         requestUri += $"&appid={API.OpenWeatherAPIKey}";
+        requestUri += "&units=metric";
         return requestUri;
     }
 

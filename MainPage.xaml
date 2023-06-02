@@ -1,28 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeatherApp.NETMAUI.MainPage">
+             x:Class="WeatherApp.NETMAUI.MainPage"
+             Shell.NavBarIsVisible="False">
 
-    <StackLayout>
-        <Image Source="{Binding weather[0].icon}" />
-        <Label x:Name="LabelLatitude" 
-               FontSize="20"
-               Text="{Binding main.temp}"
-               TranslationX="50"
-               TranslationY="250"/>
-        <Label x:Name="LabelLongitude"
-               FontSize="20"
-               Text="{Binding main.feels_like}"
-               TranslationX="50"
-               TranslationY="300"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <VerticalStackLayout Grid.Row="0">
+
+            <Image Source="{Binding weather[0].icon}"
+                   HeightRequest="200"
+                   HorizontalOptions="Center"/>
+            <Label HorizontalOptions="Center"
+                   FontSize="60"
+                   Text="{Binding weather[0].main}"/>
+            <Label HorizontalOptions="Center"
+                   FontSize="40"
+                   Text="{Binding weather[0].description}"/>
+
+            <VerticalStackLayout Margin="50 0 0 0">
+                <Label HorizontalOptions="Center"
+                       FontSize="30"
+                       Text="{Binding main.temp, StringFormat='Temperature: {0} °C'}"/>
+                <Label HorizontalOptions="Center"
+                       FontSize="30"
+                       Text="{Binding main.feels_like, StringFormat='Feels like: {0} °C'}"/>
+            </VerticalStackLayout>
+            
+        </VerticalStackLayout>
+        
         <Button
-                BackgroundColor="#7c58c9"
-                BorderColor="White"
-                BorderWidth="1"
-                Clicked="ButtonClicked"
-                Text="Get Weather"
-                TextColor="White"
-                TranslationY="500"/>
-    </StackLayout>
-
+                    BackgroundColor="#7c58c9"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    Clicked="ButtonClicked"
+                    Text="Get Weather"
+                    TextColor="White"
+                    Grid.Row="2"/>
+    </Grid>
+    
 </ContentPage>
